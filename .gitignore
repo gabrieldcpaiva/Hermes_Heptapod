@@ -1,0 +1,55 @@
+# Secrets and sensitive data
+.env
+*.key
+*.pem
+*secret*
+*token*
+*credential*
+
+# Logs
+logs/
+*.log
+
+# Cache and temporary data
+cache/
+.sandboxes/
+node/
+images/
+image_cache/
+audio_cache/
+.*_cache.json
+context_length_cache.yaml
+
+# Database and state files
+state.db
+state.db-shm
+state.db-wal
+kanban.db
+*.db
+*.db-*
+sessions/
+pastes/
+shared/
+state-snapshots/
+models_dev_cache.json
+provider_models_cache.json
+ollama_cloud_models_cache.json
+interrupt_debug.log
+
+# Config backups (may contain secrets)
+config.yaml.bak.*
+
+# PID and lock files
+*.pid
+*.lock
+
+# macOS
+.DS_Store
+
+# Hermes specific sensitive files
+auth.json
+channel_directory.json
+processes.json
+provider_models_cache.json
+.hermes_history
+hermes-agent/

@@ -1,0 +1,116 @@
+{
+  "unlocks": {
+    "autonomous_avalanche": {
+      "evidence": null,
+      "first_tier": "Copper",
+      "unlocked_at": 1780130618
+    },
+    "browser_possession": {
+      "evidence": null,
+      "first_tier": "Copper",
+      "unlocked_at": 1779826846
+    },
+    "claude_confidant": {
+      "evidence": null,
+      "first_tier": "Copper",
+      "unlocked_at": 1779577644
+    },
+    "config_surgeon": {
+      "evidence": null,
+      "first_tier": "Copper",
+      "unlocked_at": 1779577644
+    },
+    "five_model_flight": {
+      "evidence": null,
+      "first_tier": "Copper",
+      "unlocked_at": 1779920517
+    },
+    "gemini_cartographer": {
+      "evidence": null,
+      "first_tier": "Silver",
+      "unlocked_at": 1779577644
+    },
+    "let_him_cook": {
+      "evidence": {
+        "session_id": "20260526_140703_ecda52",
+        "title": "Securing Julien's Medication Funds",
+        "value": 206
+      },
+      "first_tier": "Copper",
+      "unlocked_at": 1779920517
+    },
+    "marathon_operator": {
+      "evidence": null,
+      "first_tier": "Copper",
+      "unlocked_at": 1780130618
+    },
+    "model_sommelier": {
+      "evidence": null,
+      "first_tier": "Silver",
+      "unlocked_at": 1779577644
+    },
+    "multi_model_mage": {
+      "evidence": null,
+      "first_tier": "Copper",
+      "unlocked_at": 1780130618
+    },
+    "night_shift_operator": {
+      "evidence": null,
+      "first_tier": "Copper",
+      "unlocked_at": 1780130618
+    },
+    "openrouter_enjoyer": {
+      "evidence": null,
+      "first_tier": "Copper",
+      "unlocked_at": 1779920517
+    },
+    "port_3000_taken": {
+      "evidence": null,
+      "first_tier": "Copper",
+      "unlocked_at": 1780130618
+    },
+    "provider_polyglot": {
+      "evidence": null,
+      "first_tier": "Copper",
+      "unlocked_at": 1779577644
+    },
+    "screenshot_hunter": {
+      "evidence": null,
+      "first_tier": "Gold",
+      "unlocked_at": 1779826846
+    },
+    "supposed_to_be_quick": {
+      "evidence": {
+        "session_id": "20260523_173039_6351ba",
+        "title": "Sticking with OWL after API burn",
+        "value": 321
+      },
+      "first_tier": "Copper",
+      "unlocked_at": 1779722245
+    },
+    "test_suite_tamer": {
+      "evidence": null,
+      "first_tier": "Copper",
+      "unlocked_at": 1779722245
+    },
+    "toolchain_maxxer": {
+      "evidence": {
+        "session_id": "20260526_140703_ecda52",
+        "title": "Securing Julien's Medication Funds",
+        "value": 18
+      },
+      "first_tier": "Copper",
+      "unlocked_at": 1779920517
+    },
+    "toolset_cartographer": {
+      "evidence": null,
+      "first_tier": "Silver",
+      "unlocked_at": 1779577644
+    },
+    "weekend_warrior": {
+      "evidence": null,
+      "first_tier": "Copper",
+      "unlocked_at": 1780180565
+    }
+  }
+}

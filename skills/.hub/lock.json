@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "installed": {
+    "openhands": {
+      "source": "official",
+      "identifier": "official/autonomous-ai-agents/openhands",
+      "trust_level": "builtin",
+      "scan_verdict": "safe",
+      "content_hash": "sha256:52b5ae34263fbd4c",
+      "install_path": "autonomous-ai-agents/openhands",
+      "files": [
+        "SKILL.md"
+      ],
+      "metadata": {},
+      "installed_at": "2026-05-26T20:08:58.442168+00:00",
+      "updated_at": "2026-05-26T20:08:58.442171+00:00"
+    }
+  }
+}

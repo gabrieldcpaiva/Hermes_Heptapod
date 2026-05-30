@@ -1,0 +1,26 @@
+[
+  {
+    "path": "/Users/gabrielpaiva/.hermes/cron",
+    "timestamp": "2026-05-26T19:30:14.242940+00:00",
+    "category": "cron-output",
+    "size": 0
+  },
+  {
+    "path": "/Users/gabrielpaiva/.hermes/cron/output",
+    "timestamp": "2026-05-30T11:07:00.925611+00:00",
+    "category": "cron-output",
+    "size": 0
+  },
+  {
+    "path": "/Users/gabrielpaiva/.hermes/cron/output/ef070f15e4e2",
+    "timestamp": "2026-05-30T11:07:15.127217+00:00",
+    "category": "cron-output",
+    "size": 0
+  },
+  {
+    "path": "/Users/gabrielpaiva/.hermes/cache/model_catalog.json",
+    "timestamp": "2026-05-30T11:13:37.397565+00:00",
+    "category": "temp",
+    "size": 5422
+  }
+]

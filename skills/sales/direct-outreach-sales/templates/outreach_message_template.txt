@@ -1,0 +1,83 @@
+================================================================
+OUTREACH MESSAGE TEMPLATE — 3-4 LINES, REPEATABLE
+================================================================
+Copy, paste, repeat. No customization needed.
+Save new variants in Outreach_Execution/ as .txt files.
+
+----------------------------------------------------------------
+VARIANT A — X/Twitter reply (newsletter/email complainers)
+----------------------------------------------------------------
+
+Hey. Saw your post about [newsletter/email list struggling].
+
+I built 204 deterministic prompts that write high-converting
+opt-ins, welcome sequences, and email copy. Paste into
+ChatGPT or Claude. Done.
+
+It's $9 per pack. Full Arsenal (all 7 packs) is $29.
+
+gpframes.gumroad.com/l/email_marketing
+gpframes.gumroad.com/l/full_arsenal
+
+----------------------------------------------------------------
+VARIANT B — Reddit comment (value-first, no links in comment)
+----------------------------------------------------------------
+
+Real problem here. [One sentence of actual advice].
+
+I spent a year engineering 204 deterministic prompts to
+solve exactly this. Paste-ready. No fluff.
+
+Email & Newsletter pack: $9
+Full Arsenal (all 7): $29
+
+gpframes.gumroad.com/l/email_marketing
+gpframes.gumroad.com/l/full_arsenal
+
+(Googled me — I'm on LinkedIn if you want to connect.)
+
+----------------------------------------------------------------
+VARIANT C — LinkedIn DM (warm connections)
+----------------------------------------------------------------
+
+Hey [Name]. Quick one.
+
+I built a prompt system — 1,056 prompts across 7 packs.
+Emails, newsletters, SEO, social posts, YouTube, e-commerce.
+Deterministic. Production-tested. Paste-ready.
+
+I'm charging because my son needs medication this month.
+No story. Just reality.
+
+Full Arsenal (everything): $29
+gpframes.gumroad.com/l/full_arsenal
+
+Warmly,
+Gabriel
+
+----------------------------------------------------------------
+VARIANT D — Medium / Instagram / Newsletter
+----------------------------------------------------------------
+
+I built something and I need to sell it.
+
+1,056 deterministic prompts across 7 packs — Email, SEO,
+Content, YouTube, Social Media, E-commerce. Paste them
+into ChatGPT or Claude. Get high-converting copy out.
+
+My son needs medication. I need to move units.
+
+The Full Arsenal (all 7 packs): $29
+gpframes.gumroad.com/l/full_arsenal
+
+That's it. No funnel. Just prompts.
+
+================================================================
+RULES:
+- 3-4 lines max + links
+- Same message, repeated — do not customize per person
+- Plain text only, no Markdown formatting
+- Always include both specific pack AND Full Arsenal link
+- Raw honesty about why you're selling is the pitch
+- No credentials in the copy (no "physicist", no "8th Airtable user")
+================================================================

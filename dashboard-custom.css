@@ -1,0 +1,26 @@
+/* Custom Hermes Dashboard CSS - Collapsed Sidebar */
+@media (min-width: 1024px) {
+  #app-sidebar {
+    width: 48px !important;
+    min-width: 48px !important;
+    max-width: 48px !important;
+    transition: width 0.2s ease;
+  }
+  #app-sidebar:hover {
+    width: 256px !important;
+    max-width: 256px !important;
+  }
+  #app-sidebar .truncate {
+    opacity: 0;
+    transition: opacity 0.15s ease;
+  }
+  #app-sidebar:hover .truncate {
+    opacity: 1;
+  }
+  #app-sidebar nav span:not(.truncate) {
+    display: none;
+  }
+  #app-sidebar:hover nav span:not(.truncate) {
+    display: inline;
+  }
+}

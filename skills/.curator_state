@@ -1,0 +1,9 @@
+{
+  "last_report_path": "/Users/gabrielpaiva/.hermes/logs/curator/20260528-195846",
+  "last_run_at": "2026-05-28T19:58:46.429930+00:00",
+  "last_run_duration_seconds": 140.390504,
+  "last_run_summary": "auto: no changes; llm: I have completed the consolidation of your unpinned agent-created skills into a cohesive, highly discoverable set of **class-level umbrella skills**. All valuable experiential knowledge, custom templates, scripts, and target-market guidelin…\narchived 5 skill(s):\n  • linkedin-automation → chrome-session-automation\n  • gumroad-product-copy — pruned (stale)\n  • gumroad-storefront — pruned (stale)\n  • hermes-providers — pruned (stale)\n  • hermes-tui-and-dashboard — pruned (stale)\nfull report: hermes curator status\nkeep an umbrella stable: hermes curator pin chrome-session-automation",
+  "last_run_summary_shown_at": "2026-05-28T19:58:46.429930+00:00",
+  "paused": false,
+  "run_count": 2
+}

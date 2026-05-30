@@ -1,0 +1,78 @@
+name: compact-sidebar
+label: Compact Sidebar
+description: Default Hermes Teal theme with auto-collapsing sidebar on desktop. Hover to expand.
+palette:
+  background:
+    hex: "#041c1c"
+    alpha: 1
+  midground:
+    hex: "#ffe6cb"
+    alpha: 1
+  foreground:
+    hex: "#ffffff"
+    alpha: 0
+  warmGlow: "rgba(255, 189, 56, 0.35)"
+  noiseOpacity: 1
+typography:
+  fontSans: 'system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif'
+  fontMono: 'ui-monospace, "SF Mono", "Cascadia Mono", Menlo, Consolas, monospace'
+  baseSize: "15px"
+  lineHeight: "1.55"
+  letterSpacing: "0"
+layout:
+  radius: "0.5rem"
+  density: "comfortable"
+customCSS: |
+  @media (min-width: 1024px) {
+    #app-sidebar {
+      width: 48px !important;
+      min-width: 48px !important;
+      max-width: 48px !important;
+      overflow: hidden !important;
+      transition: width 0.25s ease;
+    }
+    #app-sidebar:hover {
+      width: 256px !important;
+      max-width: 256px !important;
+      overflow: visible !important;
+    }
+    /* Hide text elements when collapsed */
+    #app-sidebar .truncate,
+    #app-sidebar nav ul li a span:not(:first-child),
+    #app-sidebar nav > div > span,
+    #app-sidebar nav > div > div > span {
+      display: none !important;
+    }
+    /* Show text on hover */
+    #app-sidebar:hover .truncate,
+    #app-sidebar:hover nav ul li a span:not(:first-child),
+    #app-sidebar:hover nav > div > span,
+    #app-sidebar:hover nav > div > div > span {
+      display: inline !important;
+    }
+    /* Center the icons in the collapsed state */
+    #app-sidebar nav ul li a {
+      justify-content: center !important;
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+    }
+    #app-sidebar:hover nav ul li a {
+      justify-content: flex-start !important;
+    }
+    /* Hide the HERMES AGENT header text when collapsed */
+    #app-sidebar > div:first-child .truncate {
+      display: none !important;
+    }
+    #app-sidebar:hover > div:first-child .truncate {
+      display: block !important;
+    }
+    /* Adjust main content area to fill the freed space */
+    .lg\:grid-cols-\[max-content_1fr\],
+    .lg\:grid {
+      grid-template-columns: 48px 1fr !important;
+    }
+    #app-sidebar:hover ~ * .lg\:grid-cols-\[max-content_1fr\],
+    #app-sidebar:hover ~ * .lg\:grid {
+      grid-template-columns: 256px 1fr !important;
+    }
+  }
