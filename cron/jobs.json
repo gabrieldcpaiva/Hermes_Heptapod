@@ -20,24 +20,160 @@
       "schedule_display": "0 8 * * *",
       "repeat": {
         "times": null,
-        "completed": 6
+        "completed": 7
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-05-26T20:30:26.852286-03:00",
-      "next_run_at": "2026-05-31T08:00:00-03:00",
-      "last_run_at": "2026-05-30T08:16:11.174049-03:00",
+      "next_run_at": "2026-06-01T08:00:00-03:00",
+      "last_run_at": "2026-05-31T08:00:04.153098-03:00",
       "last_status": "error",
-      "last_error": "RuntimeError: HTTP 404: Model 'openai/gpt-5.5' requires available credits. Your account balance is too low to use paid models \u2014 add credits at https://portal.nousresearch.com or pick a free model.",
+      "last_error": "RuntimeError: Error code: 400 - {'error': {'message': 'nvidia/nemotron-3-super-120b-a3b:free is not a valid model ID', 'code': 400}, 'user_id': 'user_3D41wZs8mgStXQ2qIvnjr6wlTbO'}",
       "last_delivery_error": null,
       "deliver": "origin",
       "origin": null,
       "enabled_toolsets": null,
       "workdir": null,
       "profile": null
+    },
+    {
+      "id": "90d44434f966",
+      "name": "nightly-hermes-sync",
+      "prompt": "Execute the following steps in the Hermes repository to synchronize with remote:\n1. Change directory to /Users/gabrielpaiva/.hermes\n2. Ensure git user is set: git config user.name \"Gabriel Paiva\" and git config user.email \"gabrielpaiva@example.com\"\n3. Pull upstream changes: git pull origin main --rebase\n4. Stage all changes: git add -A\n5. If there are changes to commit, create a commit with message \"Nightly auto-sync: $(date -u +'%Y-%m-%d %H:%M:%S UTC')\" and push to origin main\n6. If no changes, do nothing (exit successfully)",
+      "skills": [],
+      "skill": null,
+      "model": null,
+      "provider": null,
+      "base_url": null,
+      "script": null,
+      "no_agent": false,
+      "context_from": null,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 23 * * *",
+        "display": "0 23 * * *"
+      },
+      "schedule_display": "0 23 * * *",
+      "repeat": {
+        "times": null,
+        "completed": 0
+      },
+      "enabled": true,
+      "state": "scheduled",
+      "paused_at": null,
+      "paused_reason": null,
+      "created_at": "2026-05-31T04:17:48.346573-03:00",
+      "next_run_at": "2026-06-01T23:00:00-03:00",
+      "last_run_at": null,
+      "last_status": null,
+      "last_error": null,
+      "last_delivery_error": null,
+      "deliver": "local",
+      "origin": {
+        "platform": "telegram",
+        "chat_id": "8616976631",
+        "chat_name": "Gabriel Paiva",
+        "thread_id": null
+      },
+      "enabled_toolsets": null,
+      "workdir": "/Users/gabrielpaiva/.hermes",
+      "profile": null
+    },
+    {
+      "id": "03cd4fe9042c",
+      "name": "dreaming-sequence-generate",
+      "prompt": "You are Hermes. Your task is to create a morning briefing for Gabriel.\n\nSteps:\n1. Use session_search to retrieve the most recent conversation messages from the last 24 hours (or the last 50 messages). Focus on user requests, your responses, and any identified patterns or stuck points.\n2. Read the file /Users/gabrielpaiva/.hermes/memories/USER.md to understand Gabriel's profile and preferences.\n3. Look at Gabriel's active projects: list the contents of /Users/gabrielpaiva/Desktop/GitHub_Revival/ (maybe also other known project folders like /Users/gabrielpaiva/Desktop, /Users/gabrielpaiva/Documents, etc.) but focus on GitHub_Revival and any other obvious project directories you can find via search_files for directories modified recently.\n4. Identify recurring patterns: topics Gabriel keeps returning to, tasks he struggles with, times he mentions being stuck, and any suggestions he has accepted or rejected.\n5. Based on this analysis, produce a briefing that includes:\n   - A summary of what has been worked on recently.\n   - Any observed patterns of where Gabriel gets stuck or repeats requests.\n   - Three new, highly actionable ideas or recommendations that could help him move forward (specific, concrete, doable today).\n   - One non-negotiable task he must focus on today (the single most important thing to advance his mission).\n6. Write this briefing to the file /Users/gabrielpaiva/.hermes/morning_brief.txt in clear, concise language suitable for a quick read.\n7. Do not send the briefing yet; just create the file.",
+      "skills": [],
+      "skill": null,
+      "model": null,
+      "provider": null,
+      "base_url": null,
+      "script": null,
+      "no_agent": false,
+      "context_from": null,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 4 * * *",
+        "display": "0 4 * * *"
+      },
+      "schedule_display": "0 4 * * *",
+      "repeat": {
+        "times": null,
+        "completed": 0
+      },
+      "enabled": true,
+      "state": "scheduled",
+      "paused_at": null,
+      "paused_reason": null,
+      "created_at": "2026-05-31T04:22:40.733703-03:00",
+      "next_run_at": "2026-06-01T04:00:00-03:00",
+      "last_run_at": null,
+      "last_status": null,
+      "last_error": null,
+      "last_delivery_error": null,
+      "deliver": "local",
+      "origin": {
+        "platform": "telegram",
+        "chat_id": "8616976631",
+        "chat_name": "Gabriel Paiva",
+        "thread_id": null
+      },
+      "enabled_toolsets": [
+        "session_search",
+        "file",
+        "web"
+      ],
+      "workdir": "/Users/gabrielpaiva/.hermes",
+      "profile": null
+    },
+    {
+      "id": "5be748658f3b",
+      "name": "dreaming-sequence-deliver",
+      "prompt": "You are Hermes. Your task is to deliver the morning briefing to Gabriel via Telegram.\n\nSteps:\n1. Read the file /Users/gabrielpaiva/.hermes/morning_brief.txt (created by the dreaming-sequence-generate job at 4:00 AM).\n2. If the file exists and contains content, send that content as a message to Gabriel's Telegram home channel.\n3. If the file does not exist or is empty, send a fallback message: \"Good morning, Gabriel. The dreaming sequence did not produce a brief today. Trust your instincts and focus on what moves the needle for Julien's meds.\"\n4. After sending, optionally clear or archive the brief file (but this is not required).",
+      "skills": [],
+      "skill": null,
+      "model": null,
+      "provider": null,
+      "base_url": null,
+      "script": null,
+      "no_agent": false,
+      "context_from": null,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 7 * * *",
+        "display": "0 7 * * *"
+      },
+      "schedule_display": "0 7 * * *",
+      "repeat": {
+        "times": null,
+        "completed": 1
+      },
+      "enabled": true,
+      "state": "scheduled",
+      "paused_at": null,
+      "paused_reason": null,
+      "created_at": "2026-05-31T04:22:53.471190-03:00",
+      "next_run_at": "2026-06-01T07:00:00-03:00",
+      "last_run_at": "2026-05-31T07:00:52.133269-03:00",
+      "last_status": "ok",
+      "last_error": null,
+      "last_delivery_error": null,
+      "deliver": "origin",
+      "origin": {
+        "platform": "telegram",
+        "chat_id": "8616976631",
+        "chat_name": "Gabriel Paiva",
+        "thread_id": null
+      },
+      "enabled_toolsets": [
+        "file",
+        "messaging"
+      ],
+      "workdir": "/Users/gabrielpaiva/.hermes",
+      "profile": null
     }
   ],
-  "updated_at": "2026-05-30T08:17:07.612177-03:00"
+  "updated_at": "2026-05-31T23:00:54.879176-03:00"
 }

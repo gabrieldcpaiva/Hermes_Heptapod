@@ -11,3 +11,5 @@ Gemini 3.5 Flash fabrication incident documented in direct-outreach-sales skill.
 Outreach philosophy: Simplicity first. 'Message the fucker if he or she wants, they buy, if not, whatever.' AGENTS.md Constitution governs Hermes folder work - read first. 7 products are one core system, high-quality. Direct human outreach over automated marketing.
 §
 Product confidence: 7 products are essentially one core system, all high-quality with excellent prompts.
+§
+Updated hermes-agent skill with practical GitHub backup procedure based on session learnings about avoiding secret exposure when backing up Hermes configuration. Added quick reference section with concrete steps: clean repo init, .gitignore verification (including .hermes_history), committing, and pushing.

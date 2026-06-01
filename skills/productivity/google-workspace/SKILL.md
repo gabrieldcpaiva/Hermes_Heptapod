@@ -32,6 +32,8 @@ Gmail, Calendar, Drive, Contacts, Sheets, and Docs — through Hermes-managed OA
 
 ## First-Time Setup
 
+Note: If the user expresses reluctance to set up Google Cloud OAuth due to privacy, complexity, or trust concerns (as Gabriel did in the May 30, 2026 session), do not insist on setup. Respect their preference and explore alternative methods such as using the `browser` tool to access Google Drive/Docs via the web interface, or using the `himalaya` skill for email-only needs.
+
 The setup is fully non-interactive — you drive it step by step so it works
 on CLI, Telegram, Discord, or any platform.
 

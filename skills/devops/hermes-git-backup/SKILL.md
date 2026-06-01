@@ -96,6 +96,11 @@ You want to version‑control your Hermes configuration (`~/.hermes`) for backup
    git status --porcelain
    git diff --cached --name-only | grep -E "\.(env|key|pem|token|credential)" && echo "WARNING: potential secret staged!" || echo "OK"
    ```
+   If a secret file appears staged, unstage it with:
+   ```bash
+   git rm --cached <file>
+   ```
+   Then add the file to `.gitignore` (if not already) and repeat the verification.
 
 6. **Commit**  
    ```bash
@@ -121,6 +126,8 @@ You want to version‑control your Hermes configuration (`~/.hermes`) for backup
 - **Embedded repository warnings** – Hermes ships with a `hermes-agent/` subdirectory that is itself a Git repo. If you get warnings about adding an embedded repo, either ignore them (they are safe) or add `hermes-agent/` to `.gitignore` and treat it as a submodule separately.
 - **Force‑pushing history** – never rewrite history after you have pushed; if you must remove a secret that slipped, delete the file, add it to `.gitignore`, `git commit --amend`, then `git push --force` **only** if you are certain no one else has cloned the repo.
 - **Remote authentication** – use HTTPS with a personal access token, or SSH keys, depending on your remote’s settings. Do not embed passwords in the URL.
+- **Divergent histories** – If the remote already has commits that are not in your local repo (e.g., after a force push or separate init), git will reject pushes. First try `git pull origin main --allow-unrelated-histories` to merge the histories. If you intentionally want to replace the remote history (e.g., you are resetting the backup), use `git push -f origin main` **only after confirming** you won't lose needed data.
+- **Divergent histories** – If the remote already has commits that are not in your local repo (e.g., after a force push or separate init), git will reject pushes. First try `git pull origin main --allow-unrelated-histories` to merge the histories. If you intentionally want to replace the remote history (e.g., you are resetting the backup), use `git push -f origin main` **only after confirming** you won't lose needed data.
 
 ## Verification
 After pushing, clone the repository to a temporary location and ensure:

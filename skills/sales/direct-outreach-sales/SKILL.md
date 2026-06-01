@@ -174,8 +174,12 @@ You have **MarketingKits in PT/BR for Mechanics and Nail Salons.** These are gol
 
 When immediate revenue is needed (e.g., R$ 1.000 for Julien's meds):
 
-1. **Sell the Core System First:** The 7 products are one unified system. Focus on selling the **Email & Newsletter Mastery ($9)** or **The Full Arsenal ($29)** to high-intent creators complaining about newsletter growth, content creation burnout, or email list conversion. These are immediate pain points your system solves.
+1. **Assess Product Availability First:** Check if products are already published/live (e.g., on Gumroad, Hotmart). 
+   - **If products ARE already live** (as verified in session), the bottleneck is DISTRIBUTION, not product creation. Focus outreach on driving traffic to existing store links.
+   - **If products need to be published/prioritize selling the core system first:** The 7 products are one unified system. Focus on selling the **Email & Newsletter Mastery ($9)** or **The Full Arsenal ($29)** to high-intent creators complaining about newsletter growth, content creation burnout, or email list conversion. These are immediate pain points your system solves.
 
+2. **Pivot to High-Ticket B2B Only if Explicitly Requested:** Gabriel may choose to offer Airtable audits (R$ 1.200+) to Brazilian agencies. This is a separate track requiring different positioning. In THIS context ONLY (high-ticket B2B, agencies, operational audits), it is appropriate to reference credentials like 8th global Airtable user — because the buyer is purchasing institutional expertise, not a digital download. This is the ONLY scenario where credential-framing belongs. Never in product outreach to individuals.
+2. **Pivot to High-Ticket B2B Only if Explicitly Requested:** Gabriel may choose to offer Airtable audits (R$ 1.200+) to Brazilian agencies. This is a separate track requiring different positioning. In THIS context ONLY (high-ticket B2B, agencies, operational audits), it is appropriate to reference credentials like 8th global Airtable user — because the buyer is purchasing institutional expertise, not a digital download. This is the ONLY scenario where credential-framing belongs. Never in product outreach to individuals.
 2. **Pivot to High-Ticket B2B Only if Explicitly Requested:** Gabriel may choose to offer Airtable audits (R$ 1.200+) to Brazilian agencies. This is a separate track requiring different positioning. In THIS context ONLY (high-ticket B2B, agencies, operational audits), it is appropriate to reference credentials like 8th global Airtable user — because the buyer is purchasing institutional expertise, not a digital download. This is the ONLY scenario where credential-framing belongs. Never in product outreach to individuals.
 
 3. **Realistic Conversion Expectations:**
@@ -199,3 +203,4 @@ When immediate revenue is needed (e.g., R$ 1.000 for Julien's meds):
 - `references/mail_app_automation.md` — Native macOS Mail.app AppleScript automation guide.
 - `references/model_deception_case_study.md` — Case study: Gemini 3.5 Flash fabrication incident and prevention protocols.
 - `references/cleanup_fake_drafts.md` — Protocol for exporting and deleting fake email drafts after model fabrication incidents.
+- `references/image_generation_config_check.md` — Verification protocol for image generation services (FAL vs OpenAI) to prevent wasted time on failed generation attempts.

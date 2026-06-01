@@ -200,8 +200,6 @@ If an MCP tool call fails, any credential-like patterns in the error message are
 - GitHub PATs (`ghp_...`)
 - OpenAI-style keys (`sk-...`)
 - Bearer tokens
-- Generic `token=`, `key=`, `API_KEY=`, `password=`, `secret=` patterns
-
 ## Troubleshooting
 
 ### "MCP SDK not available -- skipping MCP tool discovery"
@@ -210,6 +208,8 @@ The `mcp` Python package is not installed. Install it:
 
 ```bash
 pip install mcp
+# or, if using uv:
+uv pip install mcp
 ```
 
 ### "No MCP servers configured"
@@ -242,6 +242,19 @@ pip install --upgrade mcp
 ### Connection keeps dropping
 
 The client retries up to 5 times with exponential backoff (1s, 2s, 4s, 8s, 16s, capped at 60s). If the server is fundamentally unreachable, it gives up after 5 attempts. Check the server process and network connectivity.
+
+### Netlify MCP Server Specific Issues
+
+If you encounter `401 Unauthorized` errors when using Netlify MCP tools:
+1. Verify your `NETLIFY_AUTH_TOKEN` is correct in the MCP server config
+2. Ensure the token has sufficient permissions for the sites you're trying to manage
+3. Check that the token hasn't expired (Netlify personal access tokens don't expire by default, but can be revoked)
+
+If you get `ENOENT` errors for `@netlify/mcp`:
+1. Ensure Node.js is installed (`node --version`)
+2. Try installing the package globally: `npm install -g @netlify/mcp`
+3. Verify you're using the correct package name: `@netlify/mcp` (not `@netlify/mcp-server`)
+
 
 ## Examples
 
@@ -318,6 +331,13 @@ mcp_servers:
     headers:
       Authorization: "Bearer sk-xxxxxxxxxxxxxxxxxxxx"
     timeout: 300
+
+  netlify:
+    command: "npx"
+    args: ["-y", "@netlify/mcp"]
+    env:
+      NETLIFY_AUTH_TOKEN: "your_netlify_personal_access_token_here"
+    timeout: 60
 ```
 
 All tools from all servers are registered and available simultaneously. Each server's tools are prefixed with its name to avoid collisions.
