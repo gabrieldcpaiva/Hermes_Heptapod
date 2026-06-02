@@ -20,6 +20,11 @@
       "first_tier": "Copper",
       "unlocked_at": 1779577644
     },
+    "dependency_hell_tourist": {
+      "evidence": null,
+      "first_tier": null,
+      "unlocked_at": 1780290833
+    },
     "five_model_flight": {
       "evidence": null,
       "first_tier": "Copper",
@@ -74,10 +79,20 @@
       "first_tier": "Copper",
       "unlocked_at": 1779577644
     },
+    "rebase_acrobat": {
+      "evidence": null,
+      "first_tier": "Copper",
+      "unlocked_at": 1780290833
+    },
     "screenshot_hunter": {
       "evidence": null,
       "first_tier": "Gold",
       "unlocked_at": 1779826846
+    },
+    "skillsmith": {
+      "evidence": null,
+      "first_tier": "Copper",
+      "unlocked_at": 1780290833
     },
     "supposed_to_be_quick": {
       "evidence": {
