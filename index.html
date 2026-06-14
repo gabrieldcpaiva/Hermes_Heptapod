@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GENESIS — You're Losing Money Right Now</title>
+    
+    <!-- Open Graph / Social Preview -->
+    <meta property="og:title" content="GENESIS — Sovereign Architecture for Freelancers" />
+    <meta property="og:description" content="Five systems that close the operational gaps you're ignoring. Stop bleeding 15–20 hours a week on drag." />
+    <meta property="og:image" content="https://genesis-construct.netlify.app/genesis-lp-bg-1.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:url" content="https://genesis-construct.netlify.app" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="GENESIS — Sovereign Architecture for Freelancers" />
+    <meta name="twitter:description" content="Five systems that close the operational gaps you're ignoring." />
+    <meta name="twitter:image" content="https://genesis-construct.netlify.app/genesis-lp-bg-1.jpg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;700;800&family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        obsidian: '#0D0D12',
+                        champagne: '#C9A84C',
+                        ivory: '#FAF8F5'
+                    },
+                    fontFamily: {
+                        mono: ['JetBrains Mono', 'monospace'],
+                        sans: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        * { box-sizing: border-box; }
+        
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: #0D0D12; }
+        ::-webkit-scrollbar-thumb { background: #C9A84C; border-radius: 2px; }
+
+        *:focus { outline: 1px solid #C9A84C; outline-offset: 2px; }
+
+        body { background: #0D0D12; position: relative; }
+
+        body::after {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.08) 2px, rgba(0,0,0,0.08) 4px);
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        /* Full-bleed photo backgrounds */
+        .photo-bg {
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        .photo-bg::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(13, 13, 18, 0.85);
+            z-index: 1;
+        }
+        .photo-bg > * {
+            position: relative;
+            z-index: 2;
+        }
+
+        @keyframes flicker {
+            0%, 100% { opacity: 1; } 92% { opacity: 1; } 93% { opacity: 0.3; } 94% { opacity: 1; } 96% { opacity: 0.7; } 97% { opacity: 1; }
+        }
+
+        @keyframes glitch {
+            0% { transform: translate(0); }
+            20% { transform: translate(-1px, 1px); }
+            40% { transform: translate(1px, -1px); }
+            60% { transform: translate(-1px, 0); }
+            80% { transform: translate(1px, 0); }
+            100% { transform: translate(0); }
+        }
+
+        .glitch-hover:hover { animation: glitch 0.3s infinite; color: #C9A84C; }
+
+        .rough-box { border: 1px solid rgba(201, 168, 76, 0.15); position: relative; }
+        .rough-box::before { content: ""; position: absolute; top: -1px; left: -1px; width: 8px; height: 8px; border-top: 1px solid #C9A84C; border-left: 1px solid #C9A84C; }
+        .rough-box::after { content: ""; position: absolute; bottom: -1px; right: -1px; width: 8px; height: 8px; border-bottom: 1px solid #C9A84C; border-right: 1px solid #C9A84C; }
+
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+        .cursor-blink { animation: blink 1s step-end infinite; }
+
+        .text-crushed { letter-spacing: -0.05em; line-height: 0.9; }
+
+        ::selection { background: #C9A84C; color: #0D0D12; }
+
+        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+        .mobile-menu { transform: translateY(-100%); transition: transform 0.3s ease; }
+        .mobile-menu.open { transform: translateY(0); }
+    </style>
+</head>
+<body class="bg-obsidian text-ivory font-mono antialiased overflow-x-hidden">
+
+    <div class="fixed inset-0 z-[9998] pointer-events-none opacity-[0.03]" style="background-image: url(&quot;data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E&quot;);"></div>
+
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState, useEffect, useRef } = React;
+
+        /* ─── NAV ─── */
+        function Navbar() {
+            const [scrolled, setScrolled] = useState(false);
+            const [menuOpen, setMenuOpen] = useState(false);
+
+            useEffect(() => {
+                const h = () => setScrolled(window.scrollY > 80);
+                window.addEventListener('scroll', h);
+                return () => window.removeEventListener('scroll', h);
+            }, []);
+
+            return (
+                <>
+                    <nav className={`fixed top-0 z-[9990] w-full transition-all duration-300 border-b ${scrolled ? 'bg-obsidian/95 border-champagne/10' : 'bg-transparent border-transparent'}`}>
+                        <div className="max-w-6xl mx-auto px-4 md:px-6 py-4 flex items-center justify-between">
+                            <a href="#hero" className="font-mono text-sm tracking-[0.3em] uppercase text-champagne glitch-hover cursor-pointer">
+                                GENESIS<span className="text-ivory/30">_</span>
+                            </a>
+
+                            {/* Desktop nav */}
+                            <div className="hidden md:flex items-center gap-8 font-mono text-[11px] tracking-[0.2em] uppercase text-ivory/40">
+                                <a href="#diagnostics" className="hover:text-champagne transition-colors">Proof</a>
+                                <a href="#systems" className="hover:text-champagne transition-colors">Systems</a>
+                                <a href="#pricing" className="hover:text-champagne transition-colors">Acquire</a>
+                            </div>
+
+                            <div className="flex items-center gap-3">
+                                <a href="https://gpframes.gumroad.com/" target="_blank" rel="noopener noreferrer" className="font-mono text-[10px] tracking-[0.15em] uppercase px-4 py-2 border border-champagne/30 text-champagne hover:bg-champagne/10 transition-colors hidden sm:inline">
+                                    Enter
+                                </a>
+                                {/* Hamburger */}
+                                <button onClick={() => setMenuOpen(!menuOpen)} className="md:hidden text-champagne p-2" aria-label="Menu">
+                                    {menuOpen ? (
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                                    ) : (
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
+                                    )}
+                                </button>
+                            </div>
+                        </div>
+                    </nav>
+
+                    {/* Mobile menu overlay */}
+                    <div className={`fixed inset-0 z-[9980] bg-obsidian/98 mobile-menu flex flex-col items-center justify-center gap-8 ${menuOpen ? 'open' : ''}`}>
+                        <a href="#diagnostics" onClick={() => setMenuOpen(false)} className="font-mono text-lg tracking-[0.3em] uppercase text-ivory/60 hover:text-champagne transition-colors">Proof</a>
+                        <a href="#systems" onClick={() => setMenuOpen(false)} className="font-mono text-lg tracking-[0.3em] uppercase text-ivory/60 hover:text-champagne transition-colors">Systems</a>
+                        <a href="#pricing" onClick={() => setMenuOpen(false)} className="font-mono text-lg tracking-[0.3em] uppercase text-ivory/60 hover:text-champagne transition-colors">Acquire</a>
+                        <a href="https://gpframes.gumroad.com/" target="_blank" rel="noopener noreferrer" className="font-mono text-sm tracking-[0.2em] uppercase px-6 py-3 border border-champagne/30 text-champagne hover:bg-champagne/10 transition-colors mt-4">
+                            Enter Genesis
+                        </a>
+                    </div>
+                </>
+            );
+        }
+
+        /* ─── HERO ─── */
+        function Hero() {
+            const [phase, setPhase] = useState(0);
+
+            useEffect(() => {
+                const timers = [
+                    setTimeout(() => setPhase(1), 400),
+                    setTimeout(() => setPhase(2), 2200),
+                    setTimeout(() => setPhase(3), 4400),
+                    setTimeout(() => setPhase(4), 6200),
+                    setTimeout(() => setPhase(5), 8200),
+                    setTimeout(() => setPhase(6), 10500),
+                ];
+                return () => timers.forEach(clearTimeout);
+            }, []);
+
+            const quoteLines = [
+                { text: "The contractor watched the Loom.", show: phase >= 1 },
+                { text: "Asked 8 follow-up questions in Slack.", show: phase >= 2 },
+                { text: "Did the task wrong anyway.", show: phase >= 3 },
+            ];
+
+            return (
+                <section id="hero" className="relative min-h-screen flex flex-col justify-center px-4 md:px-16 photo-bg" style={{backgroundImage: `url('genesis-lp-bg-1.jpg')`}}>
+                    <div className="absolute top-20 md:top-24 left-4 md:left-16 font-mono text-[8px] md:text-[9px] tracking-[0.3em] uppercase text-ivory/30">
+                        Case file: #002 — The Loom Paradox
+                    </div>
+
+                    <div className="max-w-5xl mx-auto w-full pt-28 md:pt-32 pb-20">
+                        <div className="font-mono text-5xl md:text-8xl text-champagne/20 leading-none mb-6 md:mb-8 select-none">"</div>
+
+                        <div className="space-y-3 md:space-y-6 mb-12 md:mb-16">
+                            {quoteLines.map((line, i) => (
+                                <div key={i} className={`transition-all duration-700 ${line.show ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+                                    <p className="text-lg sm:text-xl md:text-3xl lg:text-4xl font-mono font-bold text-ivory/90 leading-tight">
+                                        {line.text}
+                                    </p>
+                                </div>
+                            ))}
+                        </div>
+
+                        <div className={`transition-all duration-1000 delay-300 ${phase >= 5 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
+                            <p className="text-base md:text-2xl font-mono text-champagne italic mb-2">
+                                So what exactly did the Loom save you?
+                            </p>
+                            <div className="w-16 h-[1px] bg-champagne/30 mt-6 mb-8 md:mb-12"></div>
+                            <p className="text-xs md:text-sm text-ivory/30 font-mono max-w-lg leading-relaxed">
+                                You recorded the video. You Slack'd the link. You answered every question. And it still came back broken. The Loom didn't fail. The loop did.
+                            </p>
+                        </div>
+
+                        <div className={`mt-12 md:mt-16 flex flex-col sm:flex-row gap-4 ${phase >= 6 ? 'opacity-100' : 'opacity-0'}`} style={{ transition: 'opacity 1s ease' }}>
+                            <a href="https://gpframes.gumroad.com/" target="_blank" rel="noopener noreferrer" className="inline-block text-center px-6 md:px-8 py-3 md:py-4 bg-champagne text-obsidian font-mono text-xs tracking-[0.2em] uppercase font-bold">
+                                Kill the loop — $37
+                            </a>
+                            <a href="#diagnostics" className="inline-block text-center px-6 md:px-8 py-3 md:py-4 border border-ivory/15 text-ivory/60 font-mono text-xs tracking-[0.2em] uppercase hover:text-champagne hover:border-champagne/30 transition-colors">
+                                See the wounds
+                            </a>
+                        </div>
+                    </div>
+
+                    <div className="absolute bottom-0 left-0 right-0 border-t border-ivory/5 px-4 md:px-16 py-3 flex items-center justify-between font-mono text-[8px] md:text-[9px] tracking-[0.2em] uppercase text-ivory/15">
+                        <span>Genesis_construct.exe</span>
+                        <span>v1.0.0</span>
+                    </div>
+                </section>
+            );
+        }
+
+        /* ─── DIAGNOSTICS ─── */
+        function Diagnostics() {
+            const [shuffled, setShuffled] = useState([
+                { title: "Custom Integration RFP", val: "$22,000", status: "Declined" },
+                { title: "Website Redesign Pitch", val: "$8,200", status: "Unread" },
+                { title: "Consulting Retainer", val: "$15,000", status: "Silent" },
+            ]);
+            useEffect(() => {
+                const iv = setInterval(() => {
+                    setShuffled(prev => { const a = [...prev]; a.unshift(a.pop()); return a; });
+                }, 3200);
+                return () => clearInterval(iv);
+            }, []);
+
+            const logs = [
+                "[09:12] SYSTEM — Loom uploaded: SOP Walkthrough (04:12)",
+                "[09:30] SLACK  — 'Hey! Quick question, blue or indigo?'",
+                "[09:44] SLACK  — 'Dynamic or static?'",
+                "[11:15] SLACK  — 'React 18, right?'",
+                "[11:48] SLACK  — 'One more thing—'",
+                "[14:20] SYSTEM — Code committed to master.",
+                "[14:22] SYSTEM — FAIL: Layout broken on staging.",
+            ];
+            const [logIdx, setLogIdx] = useState(0);
+            useEffect(() => {
+                const iv = setInterval(() => {
+                    setLogIdx(prev => prev >= logs.length - 1 ? 0 : prev + 1);
+                }, 2200);
+                return () => clearInterval(iv);
+            }, []);
+
+            const [grid, setGrid] = useState(true);
+            useEffect(() => {
+                const iv = setInterval(() => setGrid(p => !p), 1800);
+                return () => clearInterval(iv);
+            }, []);
+
+            return (
+                <section id="diagnostics" className="py-16 md:py-36 px-4 md:px-16 border-t border-ivory/5">
+                    <div className="max-w-6xl mx-auto">
+                        <div className="mb-12 md:mb-20 space-y-4">
+                            <span className="font-mono text-[8px] md:text-[9px] tracking-[0.3em] uppercase text-ivory/25">Diagnostics / Friction Report</span>
+                            <h2 className="text-2xl md:text-5xl font-mono font-bold uppercase text-crushed">
+                                System friction is<br /><span className="text-champagne">a cash leak.</span>
+                            </h2>
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            {/* Card 1 */}
+                            <div className="rough-box p-6 md:p-8 flex flex-col justify-between h-[380px] md:h-[420px]" style={{background: '#0D0D12'}}>
+                                <div>
+                                    <div className="flex justify-between items-center mb-4 md:mb-6">
+                                        <span className="font-mono text-[8px] md:text-[9px] text-red-400 tracking-widest uppercase bg-red-950/30 px-2 py-1 rounded-sm">Wasted Labor</span>
+                                        <span className="font-mono text-[8px] md:text-[9px] text-ivory/20">DCN-01</span>
+                                    </div>
+                                    <h3 className="text-base md:text-lg font-mono font-bold mb-2">The Proposal Void</h3>
+                                    <p className="text-[10px] md:text-xs font-mono text-ivory/40 leading-relaxed mb-4 md:mb-6">"You spent 4 hours writing a proposal for someone who was never going to buy."</p>
+                                    <div className="relative h-36 md:h-44 flex items-center justify-center">
+                                        {shuffled.map((item, i) => (
+                                            <div key={i} className="absolute w-[180px] md:w-[220px] transition-all duration-700 ease-out" style={{
+                                                transform: `translateY(${i * 12}px) scale(${1 - i * 0.06})`,
+                                                opacity: 1 - i * 0.25,
+                                                zIndex: 3 - i,
+                                            }}>
+                                                <div className="bg-obsidian border border-ivory/10 p-2 md:p-3">
+                                                    <div className="flex justify-between border-b border-ivory/5 pb-1 mb-1">
+                                                        <span className="font-mono text-[8px] md:text-[9px] text-champagne font-bold">{item.val}</span>
+                                                        <span className="font-mono text-[7px] md:text-[8px] text-red-400/60">{item.status}</span>
+                                                    </div>
+                                                    <div className="font-mono text-[9px] md:text-[10px] text-ivory/60 truncate">{item.title}</div>
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                                <div className="font-mono text-[7px] md:text-[8px] text-red-400/70 flex items-center gap-2 mt-4 pt-3 border-t border-ivory/5">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse"></span>
+                                    CONVERSION: 0% REALIZED
+                                </div>
+                            </div>
+
+                            {/* Card 2 */}
+                            <div className="rough-box flex flex-col justify-between h-[380px] md:h-[420px]" style={{background: '#0D0D12'}}>
+                                <div className="p-6 md:p-8 pb-0">
+                                    <div className="flex justify-between items-center mb-4 md:mb-6">
+                                        <span className="font-mono text-[8px] md:text-[9px] text-red-400 tracking-widest uppercase bg-red-950/30 px-2 py-1 rounded-sm">Friction Loop</span>
+                                        <span className="font-mono text-[8px] md:text-[9px] text-ivory/20">DCN-02</span>
+                                    </div>
+                                    <h3 className="text-base md:text-lg font-mono font-bold mb-2">The Loom-Slack Spiral</h3>
+                                    <p className="text-[10px] md:text-xs font-mono text-ivory/40 leading-relaxed">"The contractor watched the Loom, asked 8 questions, did it wrong anyway."</p>
+                                </div>
+                                <div className="flex-1 p-3 md:p-4 mx-4 mb-4 border border-ivory/5 overflow-hidden relative">
+                                    {logs.slice(0, logIdx + 1).map((log, i) => (
+                                        <div key={i} className={`font-mono text-[8px] md:text-[9px] mb-1 ${i === logIdx ? 'text-champagne' : 'text-ivory/30'} transition-opacity duration-300`}>
+                                            {log}
+                                        </div>
+                                    ))}
+                                    <span className="inline-block w-1.5 h-3 bg-champagne cursor-blink"></span>
+                                </div>
+                                <div className="font-mono text-[7px] md:text-[8px] text-red-400/70 flex items-center gap-2 px-6 md:px-8 pb-6">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse"></span>
+                                    DELEGATION LOSS: 100% DISRUPTION
+                                </div>
+                            </div>
+
+                            {/* Card 3 */}
+                            <div className="rough-box flex flex-col justify-between h-[380px] md:h-[420px] md:col-span-2 lg:col-span-1" style={{background: '#0D0D12'}}>
+                                <div className="p-6 md:p-8">
+                                    <div className="flex justify-between items-center mb-4 md:mb-6">
+                                        <span className="font-mono text-[8px] md:text-[9px] text-red-400 tracking-widest uppercase bg-red-950/30 px-2 py-1 rounded-sm">Dead Asset</span>
+                                        <span className="font-mono text-[8px] md:text-[9px] text-ivory/20">DCN-03</span>
+                                    </div>
+                                    <h3 className="text-base md:text-lg font-mono font-bold mb-2">The Invisible Ledger</h3>
+                                    <p className="text-[10px] md:text-xs font-mono text-ivory/40 leading-relaxed mb-4 md:mb-6">"18 successful projects. Zero case studies written."</p>
+                                    <div className="flex flex-col items-center gap-4 flex-1">
+                                        <div className="grid grid-cols-6 gap-1.5">
+                                            {Array.from({ length: 18 }).map((_, i) => (
+                                                <div key={i} className={`w-3 h-3 md:w-4 md:h-4 transition-all duration-500 ${grid ? 'bg-champagne border border-champagne' : 'bg-ivory/5 border border-ivory/10'}`}></div>
+                                            ))}
+                                        </div>
+                                        <div className="flex items-center gap-2 mt-2">
+                                            <span className="font-mono text-[8px] md:text-[9px] text-red-400">Case Studies Written:</span>
+                                            <span className="font-mono text-[10px] md:text-[11px] font-bold text-red-400 bg-red-950/40 px-2 py-0.5">00 / 18</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="font-mono text-[7px] md:text-[8px] text-red-400/70 flex items-center gap-2 px-6 md:px-8 pb-6 border-t border-ivory/5 pt-3">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse"></span>
+                                    MARKET VALUE EXPIRED: $0
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            );
+        }
+
+        /* ─── ACCUSATION STRIP ─── */
+        function AccusationStrip() {
+            return (
+                <section className="py-12 md:py-16 border-y border-ivory/5 bg-champagne/[0.03] overflow-hidden">
+                    <div className="flex whitespace-nowrap font-mono text-[10px] md:text-xs tracking-[0.3em] uppercase text-ivory/15" style={{ animation: 'marquee 30s linear infinite' }}>
+                        {Array.from({ length: 8 }).map((_, i) => (
+                            <span key={i} className="mx-6 md:mx-8">
+                                Your agency is one resignation away from collapse &nbsp; • &nbsp; You mumbled. The prompt wrote the manual. The result is the same. &nbsp; • &nbsp; The cost of doing nothing wasn't zero. It was $2 million in pipeline.
+                            </span>
+                        ))}
+                    </div>
+                </section>
+            );
+        }
+
+        /* ─── PHOTO / TRUST STRIP ─── */
+        function TrustStrip() {
+            return (
+                <section className="py-16 md:py-24 px-4 md:px-16 border-t border-ivory/5">
+                    <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-8 md:gap-12">
+                        {/* Photo — Gabriel + the boys, Barbour jackets, Michael Mann energy */}
+                        <div className="w-24 h-24 md:w-32 md:h-32 flex-shrink-0 border border-champagne/20 overflow-hidden bg-ivory/5">
+                            <img src="genesis-lp-bg-1.jpg" alt="Gabriel Paiva" className="w-full h-full object-cover grayscale opacity-80 hover:opacity-100 hover:grayscale-0 transition-all duration-500" />
+                        </div>
+                        <div className="space-y-4 text-center md:text-left">
+                            <p className="font-mono text-xs md:text-sm text-ivory/50 leading-relaxed">
+                                I'm Gabriel. Solo father. Photographer. Procedure architect. I built Genesis because I was bleeding 15–20 hours a week on operational drag — and I couldn't find a system that didn't feel like it was designed by someone who'd never run a business.
+                            </p>
+                            <p className="font-mono text-[10px] md:text-xs text-champagne/60">
+                                These five systems are what I use. No course. No community. No recurring fees. Just the instruments.
+                            </p>
+                            <div className="flex items-center gap-4 justify-center md:justify-start pt-2">
+                                <a href="https://instagram.com/gabriel_in_scotland" target="_blank" rel="noopener noreferrer" className="font-mono text-[9px] tracking-[0.2em] uppercase text-ivory/30 hover:text-champagne transition-colors">@gabriel_in_scotland</a>
+                                <span className="text-ivory/10">|</span>
+                                <a href="mailto:gabrieldcpaiva@gmail.com" className="font-mono text-[9px] tracking-[0.2em] uppercase text-ivory/30 hover:text-champagne transition-colors">gabrieldcpaiva@gmail.com</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            );
+        }
+
+        /* ─── SYSTEMS ─── */
+        function Systems() {
+            const systems = [
+                {
+                    num: "01",
+                    title: "The $15k Proposal in 8 Minutes",
+                    quote: "You spent 4 hours writing a proposal for someone who was never going to buy.",
+                    desc: "Drop-in prompt chain. Discovery call transcript → formatted $10k–$15k proposal in minutes. Includes 3 worked examples, 3-tier pricing framework, and follow-up email sequences.",
+                },
+                {
+                    num: "02",
+                    title: "The Loom-to-Looper",
+                    quote: "The contractor watched the Loom, asked 8 follow-up questions in Slack, and did the task wrong anyway.",
+                    desc: "Converts video recordings and transcripts into structured, contractor-ready SOPs and manuals. Kill the Slack loop.",
+                },
+                {
+                    num: "03",
+                    title: "The Case Study in 20 Minutes",
+                    quote: "You've delivered 18 successful projects in the last year. You have zero case studies written.",
+                    desc: "One 20-minute call with a happy client → 1,200-word case study, executive summary, 1-pager, LinkedIn post, sales deck slide, and email snippet.",
+                },
+                {
+                    num: "04",
+                    title: "The 90-Day Client Lock",
+                    quote: "The contract is signed. You sent a 'Welcome aboard!' email. Then nothing happens for 3 days.",
+                    desc: "Automated onboarding system. Welcome email in 1hr. Populated portal in 2hrs. Tangible Quick Win by Day 3. Churn from 35% to 8%.",
+                },
+                {
+                    num: "05",
+                    title: "The Pain Point Goldmine",
+                    quote: "Your agency is one resignation away from collapse.",
+                    desc: "Solo operators are one departure from zero revenue. This system identifies every point of failure — and builds redundancy before the bleed.",
+                },
+            ];
+
+            return (
+                <section id="systems" className="py-16 md:py-36 px-4 md:px-16 border-t border-ivory/5 photo-bg" style={{backgroundImage: `url('genesis-lp-bg-2.jpg')`}}>
+                    <div className="max-w-6xl mx-auto space-y-12 md:space-y-20">
+                        <div className="space-y-4">
+                            <span className="font-mono text-[8px] md:text-[9px] tracking-[0.3em] uppercase text-ivory/25">Operational Blueprint</span>
+                            <h2 className="text-2xl md:text-5xl font-mono font-bold uppercase text-crushed max-w-2xl">
+                                Five systems.<br />
+                                <span className="text-champagne">One diagnosis.</span>
+                            </h2>
+                        </div>
+
+                        <div className="space-y-6 md:space-y-8">
+                            {systems.map((sys, i) => (
+                                <div key={i} className="rough-box p-5 md:p-10 grid grid-cols-1 lg:grid-cols-12 gap-4 md:gap-6 items-start" style={{background: '#0D0D12'}}>
+                                    <div className="lg:col-span-1">
+                                        <span className="font-mono text-xl md:text-2xl font-bold text-champagne/40">{sys.num}</span>
+                                    </div>
+                                    <div className="lg:col-span-7 space-y-3 md:space-y-4">
+                                        <h3 className="text-lg md:text-2xl font-mono font-bold uppercase tracking-tight">{sys.title}</h3>
+                                        <p className="font-mono text-[10px] md:text-xs text-champagne/70 border-l-2 border-champagne/20 pl-3 md:pl-4 italic">"{sys.quote}"</p>
+                                        <p className="font-mono text-[10px] md:text-xs text-ivory/40 leading-relaxed max-w-xl">{sys.desc}</p>
+                                    </div>
+                                    <div className="lg:col-span-4 flex items-center justify-start lg:justify-end h-full pt-2 lg:pt-0">
+                                        <a href="https://gpframes.gumroad.com/" target="_blank" rel="noopener noreferrer" className="font-mono text-[9px] md:text-[10px] tracking-[0.2em] uppercase px-4 md:px-5 py-2 md:py-3 border border-champagne/25 text-champagne hover:bg-champagne/10 transition-colors text-center">
+                                            View system →
+                                        </a>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+
+                        <div className="text-center py-8 md:py-12">
+                            <p className="font-mono text-[10px] md:text-xs text-ivory/30 mb-4 md:mb-6">Or acquire the complete architecture.</p>
+                            <a href="https://gpframes.gumroad.com/" target="_blank" rel="noopener noreferrer" className="inline-block px-8 md:px-10 py-4 md:py-5 bg-champagne text-obsidian font-mono text-xs tracking-[0.25em] uppercase font-bold">
+                                All 5 systems — $197 one-time
+                            </a>
+                        </div>
+                    </div>
+                </section>
+            );
+        }
+
+        /* ─── PRICING ─── */
+        function Pricing() {
+            const products = [
+                {
+                    name: "The $15k Proposal in 8 Minutes",
+                    price: "$37",
+                    pain: ["4 hours per proposal", "Low close rate", "Generic templates", "No follow-up framework"],
+                },
+                {
+                    name: "The Complete Genesis Construct — All 5 Systems",
+                    price: "$197",
+                    pop: true,
+                    pain: ["The $15k Proposal in 8 Minutes", "The Loom-to-Looper", "The Case Study in 20 Minutes", "The 90-Day Client Lock", "The Pain Point Goldmine"],
+                },
+                {
+                    name: "The 90-Day Client Lock",
+                    price: "$37",
+                    pain: ["3-day silence after signing", "Churn at 35%", "No onboarding system", "Clients Googling competitors"],
+                },
+                {
+                    name: "The Loom-to-Looper",
+                    price: "$37",
+                    pain: ["Contractors watched Loom, asked 8 questions, did it wrong anyway", "SOPs live in your head, not your business", "Every new hire = 3 weeks of hand-holding"],
+                },
+                {
+                    name: "The Case Study in 20 Minutes",
+                    price: "$37",
+                    pain: ["18 successful projects, zero case studies", "Prospects ask for proof. You have none.", "Every pitch is a warm pitch."],
+                },
+            ];
+
+            return (
+                <section id="pricing" className="py-16 md:py-36 px-4 md:px-16 photo-bg border-t border-ivory/5" style={{backgroundImage: `url('genesis-lp-bg-3.jpg')`}}>
+                    <div className="max-w-5xl mx-auto space-y-12 md:space-y-16">
+                        <div className="text-center space-y-4">
+                            <span className="font-mono text-[8px] md:text-[9px] tracking-[0.3em] uppercase text-ivory/25">Acquire</span>
+                            <h2 className="text-2xl md:text-5xl font-mono font-bold uppercase">The instruments.</h2>
+                            <p className="font-mono text-[10px] md:text-xs text-ivory/30">One-time payment. Zero recurring fees. Yours forever.</p>
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            {/* Bundle — spans 2 cols on desktop */}
+                            {products.filter(p => p.pop).map((p, i) => (
+                                <div key={i} className="rough-box p-8 flex flex-col justify-between md:col-span-2 lg:col-span-1" style={{background: '#0D0D12', borderColor: 'rgba(201, 168, 76, 0.4)'}}>
+                                    <div className="space-y-5 md:space-y-6">
+                                        <span className="font-mono text-[7px] md:text-[8px] bg-champagne text-obsidian px-2 py-1 tracking-widest uppercase font-bold">Complete system</span>
+                                        <div>
+                                            <h3 className="font-mono text-xs md:text-sm font-bold mb-2 md:mb-3">{p.name}</h3>
+                                            <div className="flex items-baseline gap-2 mb-3 md:mb-4">
+                                                <span className="font-mono text-2xl md:text-3xl font-bold text-champagne">{p.price}</span>
+                                                <span className="font-mono text-[8px] md:text-[9px] text-ivory/25">/once</span>
+                                            </div>
+                                        </div>
+                                        <div className="border-t border-ivory/5 pt-3 md:pt-4">
+                                            <span className="font-mono text-[7px] md:text-[8px] text-ivory/25 uppercase tracking-widest block mb-2 md:mb-3">Includes all 5 systems:</span>
+                                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                                                {p.pain.map((pt, j) => (
+                                                    <div key={j} className="font-mono text-[9px] md:text-[10px] text-ivory/50 flex items-start gap-2">
+                                                        <span className="text-champagne mt-[-1px]">→</span>
+                                                        {pt}
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <a href="https://gpframes.gumroad.com/" target="_blank" rel="noopener noreferrer" className="mt-6 md:mt-8 block text-center py-3 font-mono text-[9px] md:text-[10px] tracking-[0.2em] uppercase font-bold transition-colors bg-champagne text-obsidian">
+                                        Secure access
+                                    </a>
+                                </div>
+                            ))}
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+                            {/* Row 2: Individual products */}
+                            {products.filter(p => !p.pop).map((p, i) => (
+                                <div key={i} className="rough-box p-6 md:p-8 flex flex-col justify-between" style={{background: '#0D0D12'}}>
+                                    <div className="space-y-5 md:space-y-6">
+                                        {p.pop && (
+                                            <span className="font-mono text-[7px] md:text-[8px] bg-champagne text-obsidian px-2 py-1 tracking-widest uppercase font-bold">Complete system</span>
+                                        )}
+                                        <div>
+                                            <h3 className="font-mono text-xs md:text-sm font-bold mb-2 md:mb-3">{p.name}</h3>
+                                            <div className="flex items-baseline gap-2 mb-3 md:mb-4">
+                                                <span className="font-mono text-2xl md:text-3xl font-bold text-champagne">{p.price}</span>
+                                                <span className="font-mono text-[8px] md:text-[9px] text-ivory/25">/once</span>
+                                            </div>
+                                        </div>
+                                        <div className="border-t border-ivory/5 pt-3 md:pt-4">
+                                            <span className="font-mono text-[7px] md:text-[8px] text-ivory/25 uppercase tracking-widest block mb-2 md:mb-3">
+                                                {p.pop ? "Includes:" : "The friction:"}
+                                            </span>
+                                            <ul className="space-y-2">
+                                                {p.pain.map((pt, j) => (
+                                                    <li key={j} className="font-mono text-[9px] md:text-[10px] text-ivory/50 flex items-start gap-2">
+                                                        <span className="text-champagne mt-[-1px]">→</span>
+                                                        {pt}
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <a href="https://gpframes.gumroad.com/" target="_blank" rel="noopener noreferrer" className={`mt-6 md:mt-8 block text-center py-3 font-mono text-[9px] md:text-[10px] tracking-[0.2em] uppercase font-bold transition-colors ${p.pop ? 'bg-champagne text-obsidian' : 'border border-ivory/15 text-ivory/60 hover:text-champagne hover:border-champagne/30'}`}>
+                                        Secure access
+                                    </a>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+            );
+        }
+
+        /* ─── FOOTER ─── */
+        function Footer() {
+            return (
+                <footer className="border-t border-ivory/5 px-4 md:px-16 py-12 md:py-16">
+                    <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-end gap-8">
+                        <div className="space-y-4">
+                            <span className="font-mono text-sm tracking-[0.3em] uppercase text-champagne font-bold">GENESIS<span className="text-ivory/20">_</span></span>
+                            <p className="font-mono text-[9px] md:text-[10px] text-ivory/25 max-w-xs leading-relaxed">
+                                Built to expose operational bleeding. Not a community. Not a course. Five systems that close the gaps you keep ignoring.
+                            </p>
+                        </div>
+                        <div className="space-y-3 text-left md:text-right">
+                            <a href="mailto:gabrieldcpaiva@gmail.com" className="block font-mono text-[9px] md:text-[10px] text-ivory/30 hover:text-champagne transition-colors">gabrieldcpaiva@gmail.com</a>
+                            <a href="https://instagram.com/gabriel_in_scotland" target="_blank" rel="noopener noreferrer" className="block font-mono text-[9px] md:text-[10px] text-ivory/30 hover:text-champagne transition-colors">@gabriel_in_scotland</a>
+                            <div className="flex items-center justify-start md:justify-end gap-2 mt-4">
+                                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                                <span className="font-mono text-[7px] md:text-[8px] text-emerald-400/60 uppercase tracking-widest">Operational</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="max-w-6xl mx-auto mt-8 md:mt-12 pt-4 md:pt-6 border-t border-ivory/5 flex justify-between">
+                        <span className="font-mono text-[7px] md:text-[8px] text-ivory/15">© 2026 GENESIS</span>
+                        <span className="font-mono text-[7px] md:text-[8px] text-ivory/15">v1.0.0</span>
+                    </div>
+                </footer>
+            );
+        }
+
+        /* ─── APP ─── */
+        function App() {
+            return (
+                <div className="min-h-screen bg-obsidian text-ivory overflow-x-hidden">
+                    <Navbar />
+                    <Hero />
+                    <Diagnostics />
+                    <AccusationStrip />
+                    <TrustStrip />
+                    <Systems />
+                    <Pricing />
+                    <Footer />
+                </div>
+            );
+        }
+
+        ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+    </script>
+</body>
+</html>
