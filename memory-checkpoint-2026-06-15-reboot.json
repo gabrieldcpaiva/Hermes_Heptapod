@@ -1,0 +1,24 @@
+{
+  "checkpoint": "pre-reboot-state",
+  "date": "2026-06-15T13:15:00-03:00",
+  "agent": "hermes",
+  "status": "reboot-pending",
+  "summary": "Pre-reboot state save. GitHub auth confirmed working. Genesis Construct website pending move to dedicated repo.",
+  "completed_this_session": [
+    "GitHub token authenticated in Hermes terminal (gh auth status confirmed)",
+    "Test checkpoint pushed to gabrieldcpaiva/Hermes_Heptapod (commit c9b8587)",
+    "Memory overflow system to GitHub confirmed operational"
+  ],
+  "pending": [
+    "Genesis Construct website needs its own dedicated repo",
+    "Netlify needs to be pointed at new repo after migration",
+    "Do NOT touch current setup until Gabriel confirms post-reboot"
+  ],
+  "environment": {
+    "gh_auth": true,
+    "repo": "gabrieldcpaiva/Hermes_Heptapod",
+    "branch": "main",
+    "gh_config": "~/.config/gh/hosts.yml"
+  },
+  "notes": "Apple forced reboot due to memory issue (2GB free). Gabriel handling zoo first, then will continue website repo migration."
+}
